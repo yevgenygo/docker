@@ -1,11 +1,11 @@
 pipeline {
-    environment {
-    registry = "jeniago/devops_course"  // The name of your user and repository (which can be created manually)
-    registryCredential = 'cred' // The credentials used to your repo
-    dockerImage = '' // will be overridden later
+	environment {
+		registry = "jeniago/devops_course"  // The name of your user and repository (which can be created manually)
+		registryCredential = 'cred' // The credentials used to your repo
+		dockerImage = '' // will be overridden later
 	}
-    stage('build and push image') {
-        steps {
+	stage('build and push image') {
+	    steps {
 			script {
 				dockerImage = docker.build registry + "$BUILD_NUMBER" // give a name and version to image
                 docker.withRegistry('', registryCredential) {
@@ -17,5 +17,5 @@ pipeline {
          always {
             bat "docker rmi $registry:$BUILD_NUMBER" // delete the local image at the end
 			}	
-		}
+	}
 }
