@@ -12,10 +12,11 @@ pipeline {
                 dockerImage.push()
             }
         }
-    }
-	post {
-         always {
-            bat "docker rmi $registry:$BUILD_NUMBER" // delete the local image at the end
-		}	
+
+		post {
+			always {
+				bat "docker rmi $registry:$BUILD_NUMBER" // delete the local image at the end
+			}	
+		}
 	}
-}}
+}
