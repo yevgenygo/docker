@@ -2,7 +2,7 @@ pipeline {
     environment {
     registry = "jeniago/devops_course"  // The name of your user and repository (which can be created manually)
     registryCredential = 'cred' // The credentials used to your repo
-    dockerImage = '‘ // will be overridden later
+    dockerImage = '' // will be overridden later
   }
         stage('build and push image') {
             steps {
